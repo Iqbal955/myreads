@@ -4,7 +4,8 @@ class Dropdown extends React.Component {
   render() {
     return (
       <div className="book-shelf-changer">
-        <select onChange={(e)=> this.props.changeShelf()}>
+        <select onChange={e=> this.props.changeShelf(this.props.books, e.target.value)
+        }>
           <option value="move" disabled>
             Move to...
           </option>

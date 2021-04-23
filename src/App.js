@@ -4,23 +4,17 @@ import "./App.css";
 import Dropdown from "./Dropdown.js";
 import Search from "./Search.js";
 import Shelf from "./Shelf.js";
+import { Route } from "react-router-dom";
 
 class App extends React.Component {
-
-
-
   state = {
     books: [],
+    query: "",
     ToBeRead: false,
     CurrReading: false,
     Read: false,
   };
 
-
-  changeShelf() {
-
-    console.log("Change Books")
-  }
   componentDidMount() {
     BooksAPI.getAll().then((books) => {
       console.log(books);
@@ -29,6 +23,18 @@ class App extends React.Component {
       }));
     });
   }
+  changeShelf = (book, shelf) => {
+    this.setState({
+      books: this.state.books.map((b) => {
+        console.log(b);
+        if (b.id === book.id) {
+          b.shelf = shelf;
+        }
+        return b;
+      }),
+    });
+    console.log("Change Books");
+  };
 
   /**
    * TODO: Instead of using this state variable to keep track of which page
@@ -37,17 +43,27 @@ class App extends React.Component {
    * pages, as well as provide a good URL they can bookmark and share.
    */
 
-  updateSearch = (data) => {
-    console.log(data + "this is the data");
-    this.setState({ showSearchPage: data });
+  updateSearch = (keyword, seteKeyword) => {
+    console.log("this is the data");
+    this.setState({ showSearchPage: keyword });
   };
 
   render() {
     return (
       <div className="app">
-        <Search showSearchPage={this.updateSearch} />
-        <Shelf books={this.state.books}/>
-        <Dropdown changeShelf={this.changeShelf}/>
+        <Route
+          exact
+          path="/"
+          render={() => (
+            <Shelf books={this.state.books} changeShelf={this.changeShelf} />
+          )}
+        />
+
+        <Route
+          exact
+          path="/search"
+          render={() => <Search showSearchPage={this.updateSearch} />}
+        />
       </div>
     );
   }

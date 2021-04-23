@@ -31,7 +31,7 @@ class Book extends React.Component {
                         backgroundImage: `url(${books.imageLinks.thumbnail})`,
                       }}
                     />
-                    <Dropdown books = {this.props.books}/>
+                    <Dropdown books = {books} changeShelf={this.props.changeShelf}/>
                   </div>
                   <div className="book-title">{books.title}</div>
                   <div className="book-authors">{books.authors}</div>

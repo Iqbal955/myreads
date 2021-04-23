@@ -18,7 +18,7 @@ class Shelf extends React.Component {
       
             <div>
             <Book allBooks= {allBooks} />
-            <Book books = {currentlyReading} title ={"Currently Reading"} changeShelf={this.props.changeShelf}/>
+            <Book books = {currentlyReading} title ={"Currently Reading"}changeShelf={this.props.changeShelf}/>
             <Book books = {wantToRead} title = {"Want to read"} changeShelf={this.props.changeShelf}/>
             <Book books = {read} title = {"Read"} changeShelf={this.props.changeShelf}/>
             </div>
