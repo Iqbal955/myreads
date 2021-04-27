@@ -51,6 +51,12 @@ class App extends React.Component {
   render() {
     return (
       <div className="app">
+
+        <Route
+          exact
+          path="/search"
+          render={() => <Search showSearchPage={this.updateSearch} />}
+        />
         <Route
           exact
           path="/"
@@ -59,11 +65,7 @@ class App extends React.Component {
           )}
         />
 
-        <Route
-          exact
-          path="/search"
-          render={() => <Search showSearchPage={this.updateSearch} />}
-        />
+
       </div>
     );
   }

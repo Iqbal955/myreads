@@ -1,18 +1,53 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { search } from "./BooksAPI";
 
 class Search extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+    query: "",
+    books: []
+    }
+  }
+
+  updateQuery = async e => {
+    try {
+      const query = e.target.value;
+      this.setState({ query });
+      if (query.trim()) {
+       
+        const results = await search(query);
+        console.log(results);
+
+        if (results.error) {
+          this.setState({ books: [] });
+        } else {
+          this.setState({ books: results });
+        }
+      }
+        else {
+          this.setState({books: []})
+        }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   render() {
     return (
       <div className="search-books">
         <div className="search-books-bar">
-          <button
-            className="close-search"
-            onClick={(e) => this.props.showSearchPage(e.target.value)}
-          >
+          <Link className="close-search" to={"/"}>
             Close
-          </button>
+          </Link>
           <div className="search-books-input-wrapper">
-            <input type="text" placeholder="Search by title or author" />
+            <input
+              type="text"
+              placeholder="Search by title or author"
+              onChange={this.updateQuery}
+              value={this.state.query}
+            />
           </div>
         </div>
         <div className="search-books-results">

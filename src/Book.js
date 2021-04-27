@@ -8,8 +8,9 @@ class Book extends React.Component {
   render() {
     console.log(this.props.books)
     return (
+      
       <div className="list-books">
-
+<Search/>
       <div className="bookshelf">
         <h2 className="bookshelf-title">{this.props.title}</h2>
          {/*  book to be placed here */}
