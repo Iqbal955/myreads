@@ -55,7 +55,7 @@ class App extends React.Component {
         <Route
           exact
           path="/search"
-          render={() => <Search showSearchPage={this.updateSearch} />}
+          render={() => <Search showSearchPage={this.updateSearch} changeShelf={this.changeShelf} books={this.state.books}/>}
         />
         <Route
           exact
@@ -67,6 +67,7 @@ class App extends React.Component {
 
 
       </div>
+
     );
   }
 }
