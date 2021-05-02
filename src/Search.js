@@ -54,7 +54,7 @@ class Search extends React.Component {
         <div className="search-books-results">
 
           <ol className="books-grid" />
-          {this.state.books.length > 0 && this.state.books.map(book => <Book key={book.id} books={book} changeShelf={this.props.changeShelf}/>)}
+          {this.state.books.length > 0 && this.state.books.map(book => <Book key={book.id} books={...book} changeShelf={this.props.changeShelf}/>)}
         </div>
       </div>
     );

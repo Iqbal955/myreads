@@ -10,7 +10,6 @@ class Book extends React.Component {
     console.log(this.props);
     return (
       <div className="list-books">
-      
                 <li key={this.props.books.id}>
                   <div className="book">
                     <div className="book-top">
