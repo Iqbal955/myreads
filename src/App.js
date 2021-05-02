@@ -21,6 +21,7 @@ class App extends React.Component {
       this.setState(() => ({
         books: books,
       }));
+      console.log(books)
     });
   }
   changeShelf = (book, shelf) => {

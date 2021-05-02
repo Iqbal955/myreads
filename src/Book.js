@@ -7,18 +7,10 @@ import Header from "./Header";
 
 class Book extends React.Component {
   render() {
-    console.log(this.props.books);
+    console.log(this.props);
     return (
       <div className="list-books">
-        <Search />
-        <div className="bookshelf">
-          <h2 className="bookshelf-title">{this.props.title}</h2>
-          {/*  book to be placed here */}
-        </div>
-        <div className="bookshelf-books">
-          <ol className="books-grid">
-            {this.props.books != null &&
-              this.props.books.map((books) => (
+      
                 <li key={this.props.books.id}>
                   <div className="book">
                     <div className="book-top">
@@ -27,21 +19,19 @@ class Book extends React.Component {
                         style={{
                           width: 128,
                           height: 193,
-                          backgroundImage: `url(${books.imageLinks.thumbnail})`,
+                          backgroundImage: `url(${this.props.books.imageLinks.thumbnail})`,
                         }}
                       />
                       <Dropdown
-                        books={books}
+                        books={this.props.books}
                         changeShelf={this.props.changeShelf}
                       />
                     </div>
-                    <div className="book-title">{books.title}</div>
-                    <div className="book-authors">{books.authors}</div>
+                    <div className="book-title">{this.props.books.title}</div>
+                    <div className="book-authors">{this.props.books.authors}</div>
                   </div>
                 </li>
-              ))}
-          </ol>
-        </div>
+
         <div className="open-search">
           <Link to="/search">Add a book</Link>
         </div>
