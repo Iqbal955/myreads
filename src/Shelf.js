@@ -23,7 +23,7 @@ class Shelf extends React.Component {
           {/*  book to be placed here */}
         </div>
         {this.props.books != null &&
-              this.props.books.map((books) => <Book books={allBooks}/>
+              this.props.books.map((books) => <Book books={books}/>
               )}
 
         <div>
