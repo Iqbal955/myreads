@@ -3,7 +3,7 @@ import * as BooksAPI from "./BooksAPI";
 import "./App.css";
 import Dropdown from "./Dropdown.js";
 import Search from "./Search.js";
-import Shelf from "./Shelf.js";
+import Shelfs from "./Shelfs.js";
 import { Route } from "react-router-dom";
 
 class App extends React.Component {
@@ -62,7 +62,7 @@ class App extends React.Component {
           exact
           path="/"
           render={() => (
-            <Shelf books={this.state.books} changeShelf={this.changeShelf} />
+            <Shelfs books={this.state.books} changeShelf={this.changeShelf} />
           )}
         />
 
