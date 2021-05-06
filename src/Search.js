@@ -11,7 +11,7 @@ class Search extends React.Component {
     books: []
     }
   }
-
+ 
   updateQuery = async e => {
     try {
       const query = e.target.value;
@@ -24,7 +24,9 @@ class Search extends React.Component {
         if (results.error) {
           this.setState({ books: [] });
         } else {
+        
           this.setState({ books: results });
+          this.props.addNewBooks(results)
         }
       }
         else {

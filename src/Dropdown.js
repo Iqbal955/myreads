@@ -2,6 +2,7 @@ import React from "react";
 
 class Dropdown extends React.Component {
   render() {
+    console.log(this.props)
     return (
       <div className="book-shelf-changer">
         <select onChange={e=> this.props.changeShelf(this.props.books, e.target.value)
