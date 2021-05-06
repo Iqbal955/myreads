@@ -7,13 +7,13 @@ import Header from "./Header";
 
 class Book extends React.Component {
   render() {
-    
+    var books = this.props.books
     return (
       <div className="list-books">
-        {this.props.books != null &&
-          this.props.books.map((books) => (
+      console.log(this.props)
+     
             <li key={this.props.books.id}>
-            console.log(books)
+            
               <div className="book">
                 <div className="book-top">
                   <div
@@ -35,7 +35,7 @@ class Book extends React.Component {
                 <div className="book-authors">{books.authors}</div>
               </div>
             </li>
-          ))}
+     
         <div className="open-search">
           <Link to="/search">Add a book</Link>
         </div>
