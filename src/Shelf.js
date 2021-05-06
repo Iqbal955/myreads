@@ -20,7 +20,7 @@ class Shelfs extends React.Component {
         {booksArr !== undefined &&
             booksArr.map((books) => (
            
-        <Book books={books} />
+        <Book books={books} changeShelf={this.props.changeShelf}/>
         
           ))}
         <div />

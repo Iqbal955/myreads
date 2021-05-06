@@ -10,10 +10,9 @@ class Book extends React.Component {
     var books = this.props.books
     return (
       <div className="list-books">
-      console.log(this.props)
-     
+ 
             <li key={this.props.books.id}>
-            
+        
               <div className="book">
                 <div className="book-top">
                   <div

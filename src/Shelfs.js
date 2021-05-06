@@ -17,36 +17,24 @@ class Shelfs extends React.Component {
 
     return (
       <div className="list-books">
-        {this.props.books != null &&
-          this.props.books.map((books) => <Shelf books={books} />)}
-
         <div>
-          {this.props.books != null &&
-            this.props.books.map((books) => (
-              <Shelf
-                books={currentlyReading}
-                title={"Currently Reading"}
-                changeShelf={this.props.changeShelf}
-              />
-            ))}
+          <Shelf
+            books={currentlyReading}
+            title={"Currently Reading"}
+            changeShelf={this.props.changeShelf}
+          />
 
-          {this.props.books != null &&
-            this.props.books.map((books) => (
-              <Shelf
-                books={wantToRead}
-                title={"Want to read"}
-                changeShelf={this.props.changeShelf}
-              />
-            ))}
+          <Shelf
+            books={wantToRead}
+            title={"Want to read"}
+            changeShelf={this.props.changeShelf}
+          />
 
-          {this.props.books != null &&
-            this.props.books.map((books) => (
-              <Shelf
-                books={read}
-                title={"Read"}
-                changeShelf={this.props.changeShelf}
-              />
-            ))}
+          <Shelf
+            books={read}
+            title={"Read"}
+            changeShelf={this.props.changeShelf}
+          />
         </div>
       </div>
     );
