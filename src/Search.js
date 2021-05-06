@@ -1,37 +1,34 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { search } from "./BooksAPI";
-import Book from './Book.js'
+import Book from "./Book.js";
 
 class Search extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-    query: "",
-    books: []
-    }
+      query: "",
+      books: [],
+    };
   }
- 
-  updateQuery = async e => {
+
+  updateQuery = async (e) => {
     try {
       const query = e.target.value;
       this.setState({ query });
       if (query.trim()) {
-       
         const results = await search(query);
         console.log(results);
 
         if (results.error) {
           this.setState({ books: [] });
         } else {
-        
           this.setState({ books: results });
-          this.props.addNewBooks(results)
+          this.props.addNewBooks(results);
         }
+      } else {
+        this.setState({ books: [] });
       }
-        else {
-          this.setState({books: []})
-        }
     } catch (error) {
       console.log(error);
     }
@@ -54,9 +51,15 @@ class Search extends React.Component {
           </div>
         </div>
         <div className="search-books-results">
-
           <ol className="books-grid" />
-          {this.state.books.length > 0 && this.state.books.map(book => <Book key={book.id} books={{...book}} changeShelf={this.props.changeShelf}/>)}
+          {this.state.books.length > 0 &&
+            this.state.books.map((book) => (
+              <Book
+                key={book.id}
+                books={{ ...book }}
+                changeShelf={this.props.changeShelf}
+              />
+            ))}
         </div>
       </div>
     );
