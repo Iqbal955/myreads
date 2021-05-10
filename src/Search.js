@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { search } from "./BooksAPI";
+import * as BooksAPI from "./BooksAPI";
 import Book from "./Book.js";
 
 class Search extends React.Component {
@@ -12,20 +13,23 @@ class Search extends React.Component {
     };
   }
 
-  updateQuery = async (e) => {
+  updateQuery = (e) => {
     try {
       const query = e.target.value;
       this.setState({ query });
-      if (query.trim()) {
-        const results = await search(query);
-        console.log(results);
 
-        if (results.error) {
-          this.setState({ books: [] });
-        } else {
-          this.setState({ books: results });
-          this.props.addNewBooks(results);
-        }
+      if (query) {
+        BooksAPI.search(query.trim()).then((books) => {
+          const results = books
+          console.log(results);
+
+          if (results.error) {
+            this.setState({ books: [] });
+          } else {
+            this.setState({ books: results });
+            this.props.addNewBooks(results);
+          }
+        });
       } else {
         this.setState({ books: [] });
       }
